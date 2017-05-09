@@ -45,7 +45,7 @@ function update(data){
 
 function deletes(data){
   return new Promise((resolve,reject)=>{
-    let query = `Delete from teacher where id = '${data}'`
+    let query = `Delete from teacher where id = '${data.id}'`
     db.run(query,function(err){
       if(!err){
         return resolve(data)
@@ -89,7 +89,7 @@ function test2(){
   
 
 function test4(){
-  deletes(1)
+  deletes({'id':1})
   .then((data)=>{
     console.log(`Delete Success`);
   })
