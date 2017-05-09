@@ -65,6 +65,52 @@ function deletes(data){
   });
 }
 
+function test_create(){
+  create({'id':1,'name':'ade','subject':'algoritma'})
+  .then((data) => {
+    console.log(`create is done!`);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+function test_read(){
+  read()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+function test_update(){
+  update({'id':0,'name':'tirta','subject':'javascript'})
+  .then((data) => {
+    console.log('update sukses');
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+function test_delete(){
+  deleteData({'id':1})
+  .then((data) => {
+    console.log('delete sukses');
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+
+// test_create();
+test_read();
+// test_update();
+// test_delete();
+
 module.exports = {
   create, read, update, deletes
 };
