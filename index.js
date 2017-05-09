@@ -1,8 +1,7 @@
 const sqlite = require('sqlite3').verbose()
 const db = new sqlite.Database('data.db')
 
-const repl = require('repl')
-
+// const repl = require('repl')
 
 function create(data){
   return new Promise((resolve, reject)=>{
