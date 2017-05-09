@@ -9,7 +9,7 @@ function create(data) {
     db.serialize(function() {
       db.run(query, function(err) {
         if(!err) {
-          return resolve('Success');
+          return resolve();
         } else {
           return reject(err);
         }

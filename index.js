@@ -3,15 +3,15 @@ const sqlite = require('sqlite3').verbose();
 var file = 'data.db';
 var db = new sqlite.Database(file);
 
-function callback(result) {
-  console.log(result);
-}
+// function callback(result) {
+//   console.log(result);
+// }
 
 function create(data, callback){
   let query = `INSERT INTO teacher(id, name, subject) VALUES(${data.id}, '${data.name}', '${data.subject}');`;
   db.serialize(function() {
     db.run(query, function(err) {
-      if(!err) callback('Success');
+      if(!err) callback();
       else callback(err);
     })
   });
@@ -20,7 +20,8 @@ function create(data, callback){
 function read(callback){
   let query = `SELECT * FROM teacher;`;
   db.all(query, (err, rows) => {
-    if(!err) callback(rows);
+    if(!err) callback(null, rows);
+    else callback(err, null);
   })
 }
 
@@ -28,32 +29,17 @@ function update(id, data, callback){
   let query = `UPDATE teacher SET name = '${data.name}', subject = '${data.subject}' WHERE id = ${id};`;
   db.serialize(function() {
     db.run(query, function(err) {
-      if(!err) callback(`Data ${id} updated`);
+      if(!err) callback();
       else callback(err);
     })
   });
-}
-
-function updateWithPromise(id, data) {
-  let query = `UPDATE teacher SET name = '${data.name}', subject = '${data.subject}' WHERE id = ${id};`;
-  return new Promise ((resolve, reject) => {
-    db.serialize(function() {
-      db.run(query, function(err) {
-        if(!err) {
-          return resolve(done);
-        } else {
-          return reject(err);
-        }
-      })
-    })
-  })
 }
 
 function deletes(id, callback){
   let query = `DELETE FROM teacher WHERE id = ${id};`;
   db.serialize(function() {
     db.run(query, function(err) {
-      if(!err) callback(`Data ${id} deleted`);
+      if(!err) callback();
       else callback(err);
     })
   });
