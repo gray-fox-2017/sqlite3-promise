@@ -67,7 +67,7 @@ function test1(){
   })
 }
 
-function test2(){
+function test3(){
   read()
   .then((data)=>{
     console.log(data);
@@ -77,8 +77,8 @@ function test2(){
   })
 }
 
-function test3(){
-  update({'collumn':'name','new_value':'stedykeren'})
+function test2(){
+  update({'collumn':'name','value':'stedykeren'})
   .then((data)=>{
     console.log(`Update Success!`);
   })
