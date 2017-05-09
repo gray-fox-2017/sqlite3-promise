@@ -6,7 +6,7 @@ const crud = require('../index.js')
  */
 describe('CREATE', function() {
   it('should invoke callback done', function(done) {
-    create({ id: 1, name: 'John Doe', subject: 'Foo Bar'}, done);
+    crud.read(done);
   })
 })
 
@@ -14,7 +14,7 @@ describe('CREATE', function() {
  * contoh testing function dengan promise
  * comment apabila tidak digunakan
  */
-describe('CREATE promise', function() {
+/*describe('CREATE promise', function() {
   it('should resolve and invoke callback done', function(done) {
     create()
     .then(function() {
@@ -24,4 +24,4 @@ describe('CREATE promise', function() {
       done(err)
     })
   })
-})
+})*/
