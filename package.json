@@ -1,0 +1,25 @@
+{
+  "name": "sqlite3-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gray-fox-2017/sqlite3-promise.git"
+  },
+  "author": "sahbanagold <sahbanalo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gray-fox-2017/sqlite3-promise/issues"
+  },
+  "homepage": "https://github.com/gray-fox-2017/sqlite3-promise#readme",
+  "dependencies": {
+    "sqlite3": "^3.1.8"
+  }
+}
