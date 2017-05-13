@@ -1,6 +1,7 @@
 const sqlite = require ('sqlite3').verbose();
 const db = new sqlite.Database('data.db');
 
+// This I Promise You
 function create(data){
   let query = `INSERT INTO teacher (id, name, subject) VALUES (${data.id}, '${data.name}', '${data.subject}');`;
   return new Promise ((resolve, reject) => {
@@ -25,8 +26,8 @@ function read(){
   });
 }
 
-function update(id){
-  let query = `UPDATE teacher SET name = '${data.name}', subject = '${data.subject}' WHERE id = ${id};`;
+function update(id, name, subject){
+  let query = `UPDATE teacher SET name = '${name}', subject = '${subject}' WHERE id = ${id};`;
   return new Promise ((resolve, reject) => {
     db.serialize(function() {
       db.run(query, function (err) {
@@ -50,7 +51,7 @@ function deletes(id){
 }
 
 // SORRY, I CAN'T PROMISE YOU //
-  /*
+/*
 function create(data, callback){
   let query = `INSERT INTO teacher (id, name, subject) VALUES (${data.id}, '${data.name}', '${data.subject}');`;
   db.serialize(function() {
@@ -65,13 +66,14 @@ function read(callback){
   let query = `SELECT * FROM teacher;`;
   db.serialize(function() {
     db.all(query, (err, rows) => {
-      if (!err) console.log(rows);
+      if (!err) callback(null, rows);
+      else callback(err,null);
     });
   });
 }
 
-function update(id,callback){
-  let query = `UPDATE teacher SET name = '${data.name}', subject = '${data.subject}' WHERE id = ${id};`;
+function update(id, name, subject, callback){
+  let query = `UPDATE teacher SET name = '${name}', subject = '${subject}' WHERE id = ${id};`;
   db.serialize(function() {
     db.run(query, function (err) {
       if (!err) callback ('${id} is updated');
@@ -85,6 +87,7 @@ function deletes(id, callback){
   db.serialize(function() {
     db.run(query, function (err) {
       if (!err) callback ('${id} is deleted');
+      else callback(err);
     });
   });
 }
@@ -92,8 +95,7 @@ function deletes(id, callback){
 function callback(result) {
   console.log (result);
 }
-
-*/
+  */
 module.exports = {
   create, read, update, deletes
 };
